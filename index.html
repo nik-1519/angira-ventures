@@ -1107,10 +1107,19 @@ function toggleTheme() {
   document.getElementById('theme-icon').textContent = dark ? '☀️' : '🌙';
 }
 const saved = localStorage.getItem('av-theme');
-if (saved === 'dark') {
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+if (saved === 'dark' || (!saved && prefersDark)) {
   document.body.classList.add('dark-mode');
   document.getElementById('theme-icon').textContent = '☀️';
 }
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+  if (!localStorage.getItem('av-theme')) {
+    document.body.classList.toggle('dark-mode', e.matches);
+    document.getElementById('theme-icon').textContent = e.matches ? '☀️' : '🌙';
+  }
+});
 </script>
 </body>
 </html>
