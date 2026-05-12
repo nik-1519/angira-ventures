@@ -102,7 +102,7 @@
       color: var(--gold-pale); line-height: 1;
     }
 
-    .nav-links { display: flex; gap: 2.25rem; list-style: none; align-items: center; }
+    .nav-links { display: flex; gap: 2.25rem; align-items: center; }
     .nav-links a {
       font-family: var(--ui);
       font-size: 0.7rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase;
@@ -121,7 +121,7 @@
       display: none; flex-direction: column; gap: 5px;
       cursor: pointer; padding: 6px; background: none; border: none;
     }
-    .hamburger span { width: 22px; height: 1px; background: var(--gold-pale); display: block; }
+    .hamburger span { width: 22px; height: 2px; background: var(--gold-pale); display: block; border-radius: 1px; }
     .nav-close { display: none; }
 
     /* ═══════════════════════════════════════════
@@ -613,16 +613,20 @@
       .nav-links {
         display: none; position: fixed; inset: 0;
         background: rgba(22,37,64,0.98); backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         flex-direction: column; align-items: center; justify-content: center;
-        gap: 2.5rem; z-index: 99;
+        gap: 2.5rem; z-index: 200;
+        padding-top: 5rem;
       }
       .nav-links.open { display: flex; }
       .nav-links a { font-size: 1rem; letter-spacing: 0.4em; color: var(--gold-pale); }
       .nav-cta { font-size: 0.9rem !important; padding: 0.75rem 2rem !important; }
       .nav-close {
-        position: absolute; top: 1.5rem; right: 1.5rem;
-        font-family: var(--ui); font-size: 1rem; letter-spacing: 0.3em;
-        cursor: pointer; background: none; border: none; color: var(--ink-muted);
+        position: absolute; top: 1.25rem; right: 1.25rem;
+        font-family: var(--ui); font-size: 0.85rem; font-weight: 500;
+        letter-spacing: 0.25em; text-transform: uppercase;
+        cursor: pointer; background: none; border: none;
+        color: var(--ink-muted); padding: 0.5rem;
         display: none;
       }
       .nav-links.open .nav-close { display: block; }
@@ -716,13 +720,13 @@
   <button class="hamburger" id="ham" onclick="openMenu()" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
-  <ul class="nav-links" id="navlinks">
+  <div class="nav-links" id="navlinks">
     <button class="nav-close" onclick="closeMenu()" aria-label="Close menu">CLOSE ✕</button>
-    <li><a href="#services" onclick="closeMenu()">Services</a></li>
-    <li><a href="#about"    onclick="closeMenu()">About</a></li>
-    <li><a href="#process"  onclick="closeMenu()">Process</a></li>
-    <li><a href="#contact"  onclick="closeMenu()" class="nav-cta">Get in touch</a></li>
-  </ul>
+    <a href="#services" onclick="closeMenu()">Services</a>
+    <a href="#about"    onclick="closeMenu()">About</a>
+    <a href="#process"  onclick="closeMenu()">Process</a>
+    <a href="#contact"  onclick="closeMenu()" class="nav-cta">Get in touch</a>
+  </div>
 </nav>
 
 <!-- ── HERO ── -->
